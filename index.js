@@ -95,8 +95,6 @@ function playGame() {
         let computerChoice = getComputerChoice();
 
         playRound(humanChoice, computerChoice);
-        console.log(`SCORE human: ${humanScore} | computer: ${computerScore}`);
-        console.log(`CHOICE human: ${humanChoice} | computer: ${computerChoice}`);
     }
 
     announceWinner(computerScore, humanScore);
