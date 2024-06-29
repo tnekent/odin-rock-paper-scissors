@@ -20,3 +20,13 @@ function getComputerChoice() {
 
     return choiceText;
 }
+
+function getHumanChoice() {
+    let choice = prompt("What will you choose? Rock, paper, or scissors?");
+
+    if (!/^(?:rock|paper|scissors)$/.test(choice.toLowerCase())) {
+        alert("Please input a valid choice. Refresh the page to retry.");
+    }
+
+    return choice;
+}
