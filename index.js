@@ -8,13 +8,13 @@ function getComputerChoice() {
     
     switch (choiceN) {
         case ROCK_C:
-            choiceText = "Rock";
+            choiceText = "rock";
             break;
         case PAPER_C:
-            choiceText = "Paper";
+            choiceText = "paper";
             break;
         case SCISSORS_C:
-            choiceText = "Scissors";
+            choiceText = "scissors";
             break;
     }
 
