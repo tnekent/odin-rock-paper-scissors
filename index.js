@@ -36,11 +36,11 @@ function getHumanChoice() {
 
 function announceWinner(computerScore, humanScore) {
     if (computerScore > humanScore) {
-        console.log(`The computer won! You: ${humanScore} vs Computer: ${computerScore}`);
+        console.log(`The computer won the game! You: ${humanScore} vs Computer: ${computerScore}`);
     } else if (humanScore > computerScore) {
-        console.log(`You won! You: ${humanScore} vs Computer: ${computerScore}`);
+        console.log(`You won the game! You: ${humanScore} vs Computer: ${computerScore}`);
     } else {
-        console.log(`You tied! You: ${humanScore} vs Computer: ${computerScore}`);
+        console.log(`The game is tied! You: ${humanScore} vs Computer: ${computerScore}`);
     }
 }
 
