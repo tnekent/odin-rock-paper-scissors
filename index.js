@@ -8,7 +8,7 @@ const COM_ID = 1,
 function getComputerChoice() {
     let choiceN = Math.floor(Math.random() * 3),
         choiceText;
-    
+
     switch (choiceN) {
         case ROCK_C:
             choiceText = "rock";
@@ -38,24 +38,24 @@ function getHumanChoice() {
 
 function playGame() {
     let humanScore = 0,
-    computerScore = 0;
+        computerScore = 0;
 
     function playRound(humanChoice, computerChoice) {
         if (humanChoice === computerChoice)
             console.log("You tied.");
-    
+
         const rockPlayer = humanChoice === "rock" ? HUMAN_ID
             : computerChoice === "rock" ? COM_ID : 0;
         const paperPlayer = humanChoice === "paper" ? HUMAN_ID
             : computerChoice === "paper" ? COM_ID : 0;
         const scissorsPlayer = humanChoice === "scissors" ? HUMAN_ID
             : computerChoice === "scissors" ? COM_ID : 0;
-    
+
         if (rockPlayer) { // Only need 3C2 conditions = 3
             if (paperPlayer) { // rock | paper
                 if (paperPlayer === COM_ID) {
-                        computerScore++;
-                        console.log("You lose. Rock loses to paper.");
+                    computerScore++;
+                    console.log("You lose. Rock loses to paper.");
                 } else {
                     humanScore++;
                     console.log("You win! Paper beats rock.");
@@ -81,12 +81,13 @@ function playGame() {
             }
         }
     }
+
+    for (let i = 0; i < 5; i++) {
+        let humanChoice = getHumanChoice();
+        let computerChoice = getComputerChoice();
+
+        playRound(humanChoice, computerChoice);
+    }
 }
 
-const humanChoice = getHumanChoice();
-const computerChoice = getComputerChoice();
-
-playRound(humanChoice, computerChoice);
-
-console.log(`SCORE human: ${humanScore} | computer: ${computerScore}`);
-console.log(`CHOICE human: ${humanChoice} | computer: ${computerChoice}`);
+playGame();
