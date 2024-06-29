@@ -5,9 +5,6 @@ const ROCK_C = 0,
 const COM_ID = 1,
     HUMAN_ID = 2;
 
-let humanScore = 0,
-    computerScore = 0;
-
 function getComputerChoice() {
     let choiceN = Math.floor(Math.random() * 3),
         choiceText;
@@ -40,6 +37,9 @@ function getHumanChoice() {
 
 
 function playGame() {
+    let humanScore = 0,
+    computerScore = 0;
+
     function playRound(humanChoice, computerChoice) {
         if (humanChoice === computerChoice)
             console.log("You tied.");
