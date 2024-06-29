@@ -34,7 +34,15 @@ function getHumanChoice() {
     return choice;
 }
 
-
+function announceWinner(computerScore, humanScore) {
+    if (computerScore > humanScore) {
+        console.log(`The computer won! You: ${humanScore} vs Computer: ${computerScore}`);
+    } else if (humanScore > computerScore) {
+        console.log(`You won! You: ${humanScore} vs Computer: ${computerScore}`);
+    } else {
+        console.log(`You tied! You: ${humanScore} vs Computer: ${computerScore}`);
+    }
+}
 
 function playGame() {
     let humanScore = 0,
@@ -87,7 +95,11 @@ function playGame() {
         let computerChoice = getComputerChoice();
 
         playRound(humanChoice, computerChoice);
+        console.log(`SCORE human: ${humanScore} | computer: ${computerScore}`);
+        console.log(`CHOICE human: ${humanChoice} | computer: ${computerChoice}`);
     }
+
+    announceWinner(computerScore, humanScore);
 }
 
 playGame();
