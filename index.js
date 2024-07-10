@@ -87,6 +87,7 @@ function playRound(humanChoice, computerChoice) {
 }
 
 const resultBox = document.querySelector("#result");
+const scoresBox = document.querySelector("#scores");
 const thingButtons = document.querySelectorAll("button");
 
 thingButtons.forEach(b => 
@@ -95,6 +96,7 @@ thingButtons.forEach(b =>
         const computerChoice = getRandomChoice();
         const result = playRound(humanChoice, computerChoice);
         resultBox.textContent = result;
+        scoresBox.textContent = `Your score: ${humanScore} | Computer's score: ${computerScore}`;
     })
 )
 
