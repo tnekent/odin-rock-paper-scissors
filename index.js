@@ -30,11 +30,11 @@ function getRandomChoice() {
 
 function announceWinner(computerScore, humanScore) {
     if (computerScore > humanScore) {
-        console.log(`The computer won the game! You: ${humanScore} vs Computer: ${computerScore}`);
+        return `The computer won the game! You: ${humanScore} vs Computer: ${computerScore}`;
     } else if (humanScore > computerScore) {
-        console.log(`You won the game! You: ${humanScore} vs Computer: ${computerScore}`);
+        return `You won the game! You: ${humanScore} vs Computer: ${computerScore}`;
     } else {
-        console.log(`The game is tied! You: ${humanScore} vs Computer: ${computerScore}`);
+        return `The game is tied! You: ${humanScore} vs Computer: ${computerScore}`;
     }
 }
 
@@ -88,6 +88,7 @@ function playRound(humanChoice, computerChoice) {
 
 const resultBox = document.querySelector("#result");
 const scoresBox = document.querySelector("#scores");
+const winnerBox = document.querySelector("#winner");
 const thingButtons = document.querySelectorAll("button");
 
 thingButtons.forEach(b => 
@@ -97,6 +98,17 @@ thingButtons.forEach(b =>
         const result = playRound(humanChoice, computerChoice);
         resultBox.textContent = result;
         scoresBox.textContent = `Your score: ${humanScore} | Computer's score: ${computerScore}`;
+
+        if (humanScore === 5 || computerScore === 5) {
+            const winnerAnnouncement = announceWinner(computerScore, humanScore);
+            winnerBox.textContent = winnerAnnouncement;
+
+            // One game is played until one scores upto 5 then another game is played
+            computerScore = 0;
+            humanScore = 0;
+        } else {
+            winnerBox.textContent = "";
+        }
     })
 )
 
