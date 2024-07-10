@@ -46,7 +46,7 @@ function playGame() {
 
 function playRound(humanChoice, computerChoice) {
     if (humanChoice === computerChoice)
-        console.log("You tied.");
+        return "You tied.";
 
     const rockPlayer = humanChoice === "rock" ? HUMAN_ID
         : computerChoice === "rock" ? COM_ID : 0;
@@ -59,38 +59,42 @@ function playRound(humanChoice, computerChoice) {
         if (paperPlayer) { // rock | paper
             if (paperPlayer === COM_ID) {
                 computerScore++;
-                console.log("You lose. Rock loses to paper.");
+                return "You lose. Rock loses to paper.";
             } else {
                 humanScore++;
-                console.log("You win! Paper beats rock.");
+                return "You win! Paper beats rock.";
             }
         } else if (scissorsPlayer) { // scissors | rock
             if (rockPlayer === COM_ID) {
                 computerScore++;
-                console.log("You lose. Scissors loses to rock.");
+                return "You lose. Scissors loses to rock.";
             } else {
                 humanScore++;
-                console.log("You win! Rock beats scissors.");
+                return "You win! Rock beats scissors.";
             }
         }
     } else if (paperPlayer) { // can be just "else" but prioritizing readability here
         if (scissorsPlayer) { // scissors | paper
             if (scissorsPlayer === COM_ID) {
                 computerScore++;
-                console.log("You lose. Paper loses to scissors.");
+                return "You lose. Paper loses to scissors.";
             } else {
                 humanScore++;
-                console.log("You win! Scissors beat paper.");
+                return "You win! Scissors beat paper.";
             }
         }
     }
 }
 
+const resultBox = document.querySelector("#result");
 const thingButtons = document.querySelectorAll("button");
+
 thingButtons.forEach(b => 
     b.addEventListener("click", e => {
         const humanChoice = e.target.id;
         const computerChoice = getRandomChoice();
-        playRound(humanChoice, computerChoice);
+        const result = playRound(humanChoice, computerChoice);
+        resultBox.textContent = result;
     })
 )
+
