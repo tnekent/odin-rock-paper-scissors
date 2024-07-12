@@ -124,7 +124,8 @@ function playRound(humanChoice, computerChoice) {
 }
 
 const resultBox = document.querySelector("#result");
-const scoresBox = document.querySelector("#scores");
+const humanScoreCounter = document.querySelector("#human-score .counter");
+const comScoreCounter = document.querySelector("#com-score .counter");
 const winnerBox = document.querySelector("#winner");
 const thingButtons = document.querySelectorAll("button");
 
@@ -135,8 +136,8 @@ thingButtons.forEach(b =>
         const resultPara = playRound(humanChoice, computerChoice);
         console.log(resultPara);
         resultBox.replaceChild(resultPara, resultBox.firstChild);
-        scoresBox.textContent = `Your score: ${humanScore} | Computer's score: ${computerScore}`;
-
+        humanScoreCounter.textContent = humanScore;
+        comScoreCounter.textContent = computerScore;
         if (humanScore === 5 || computerScore === 5) {
             const winnerAnnouncement = announceWinner(computerScore, humanScore);
             winnerBox.textContent = winnerAnnouncement;

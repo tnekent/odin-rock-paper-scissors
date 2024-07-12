@@ -35,3 +35,40 @@ body {
     text-align: center;
     font-size: 70px;
 }
+
+#scores {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#scores > div {
+    height: 100px;
+    font-size: 60px;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    gap: 30px;
+}
+
+.counter {
+    background-color: dimgrey;
+    height: 80px;
+    width: 80px;
+    border-radius: 20px;
+    text-align: center;
+    line-height: 80px;
+    color: white;
+}
+
+#human-score {
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background-color: cadetblue;
+}
+
+#com-score {
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    background-color: lightpink;
+}
