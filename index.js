@@ -8,6 +8,41 @@ const COM_ID = 1,
 let humanScore = 0,
     computerScore = 0;
 
+const WIN_CODE = 0,
+    LOSE_CODE = 1,
+    TIE_CODE = 2;
+
+const LOSE_COLOR = "red",
+    WIN_COLOR = "green",
+    TIE_COLOR = "blue";
+
+function makeResultsText(resultCode, extraText) {
+    const resultsPara = document.createElement("p");
+    let resultText, resultColor;
+
+    if (resultCode === WIN_CODE) {
+        resultText = "You win!  ";
+        resultColor = WIN_COLOR;
+    } else if (resultCode === LOSE_CODE) {
+        resultText = "You lose.  ";
+        resultColor = LOSE_COLOR;
+    } else {
+        // Both players tied
+        resultText = "You tied.  ";
+        resultColor = TIE_COLOR;
+    }
+
+    const resultSpan = document.createElement("span");
+    resultSpan.textContent = resultText;
+    resultSpan.style.color = resultColor;
+
+    resultsPara.appendChild(resultSpan);
+
+    const extraTextNode = document.createTextNode(extraText);
+    resultsPara.appendChild(extraTextNode)
+
+    return resultsPara;
+}
 
 function getRandomChoice() {
     let choiceN = Math.floor(Math.random() * 3),
@@ -45,8 +80,10 @@ function playGame() {
 }
 
 function playRound(humanChoice, computerChoice) {
-    if (humanChoice === computerChoice)
-        return "You tied.";
+    if (humanChoice === computerChoice) {
+        const extraText = `You both chose ${humanChoice}.`;
+        return makeResultsText(TIE_CODE, extraText);
+    };
 
     const rockPlayer = humanChoice === "rock" ? HUMAN_ID
         : computerChoice === "rock" ? COM_ID : 0;
@@ -59,28 +96,28 @@ function playRound(humanChoice, computerChoice) {
         if (paperPlayer) { // rock | paper
             if (paperPlayer === COM_ID) {
                 computerScore++;
-                return "You lose. Rock loses to paper.";
+                return makeResultsText(LOSE_CODE,"Rock loses to paper.");
             } else {
                 humanScore++;
-                return "You win! Paper beats rock.";
+                return makeResultsText(WIN_CODE,"Paper beats rock.");
             }
         } else if (scissorsPlayer) { // scissors | rock
             if (rockPlayer === COM_ID) {
                 computerScore++;
-                return "You lose. Scissors loses to rock.";
+                return makeResultsText(LOSE_CODE,"Scissors loses to rock.");
             } else {
                 humanScore++;
-                return "You win! Rock beats scissors.";
+                return makeResultsText(WIN_CODE,"Rock beats scissors.");
             }
         }
     } else if (paperPlayer) { // can be just "else" but prioritizing readability here
         if (scissorsPlayer) { // scissors | paper
             if (scissorsPlayer === COM_ID) {
                 computerScore++;
-                return "You lose. Paper loses to scissors.";
+                return makeResultsText(LOSE_CODE,"Paper loses to scissors.");
             } else {
                 humanScore++;
-                return "You win! Scissors beat paper.";
+                return makeResultsText(WIN_CODE,"Scissors beat paper.");
             }
         }
     }
@@ -95,8 +132,9 @@ thingButtons.forEach(b =>
     b.addEventListener("click", e => {
         const humanChoice = e.target.id;
         const computerChoice = getRandomChoice();
-        const result = playRound(humanChoice, computerChoice);
-        resultBox.textContent = result;
+        const resultPara = playRound(humanChoice, computerChoice);
+        console.log(resultPara);
+        resultBox.replaceChild(resultPara, resultBox.firstChild);
         scoresBox.textContent = `Your score: ${humanScore} | Computer's score: ${computerScore}`;
 
         if (humanScore === 5 || computerScore === 5) {
