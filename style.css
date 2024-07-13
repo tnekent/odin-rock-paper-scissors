@@ -1,7 +1,8 @@
 body {
     margin: 0;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    background-color: floralwhite;
+    --bg-color: floralwhite;
+    background-color: var(--bg-color);
 }
 
 #shape-div {
@@ -58,13 +59,12 @@ body {
 }
 
 .counter {
-    background-color: dimgrey;
+    background-color: var(--bg-color);
     height: 80px;
     width: 80px;
-    border-radius: 20px;
+    border-radius: 50%;
     text-align: center;
     line-height: 80px;
-    color: white;
 }
 
 #human-score {
