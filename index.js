@@ -135,7 +135,7 @@ thingButtons.forEach(b =>
         const computerChoice = getRandomChoice();
         const resultPara = playRound(humanChoice, computerChoice);
         console.log(resultPara);
-        resultBox.replaceChild(resultPara, resultBox.firstChild);
+        resultBox.replaceChild(resultPara, resultBox.firstElementChild);
         humanScoreCounter.textContent = humanScore;
         comScoreCounter.textContent = computerScore;
         if (humanScore === 5 || computerScore === 5) {
