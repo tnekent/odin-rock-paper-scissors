@@ -36,6 +36,10 @@ body {
     font-size: 70px;
 }
 
+#result p {
+    margin: 30px;
+}
+
 #scores {
     display: flex;
     justify-content: space-between;
