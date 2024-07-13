@@ -65,11 +65,11 @@ function getRandomChoice() {
 
 function announceWinner(computerScore, humanScore) {
     if (computerScore > humanScore) {
-        return `The computer won the game! You: ${humanScore} vs Computer: ${computerScore}`;
+        return `The computer won the game!`;
     } else if (humanScore > computerScore) {
-        return `You won the game! You: ${humanScore} vs Computer: ${computerScore}`;
+        return `You won the game!`;
     } else {
-        return `The game is tied! You: ${humanScore} vs Computer: ${computerScore}`;
+        return `The game is tied!`;
     }
 }
 
