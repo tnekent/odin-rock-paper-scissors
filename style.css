@@ -16,7 +16,9 @@ body {
     font-size: 40px;
     font-weight: bold;
     border-radius: 20px;
-    border-width: 0;
+    border-width: 2px;
+    border-style: solid;
+    box-shadow: 4px 4px 8px grey;
 }
 
 #rock {
